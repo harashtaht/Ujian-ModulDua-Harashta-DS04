@@ -1,0 +1,116 @@
+-- No 1: 10 Kota Terpadat di Indonesia
+
+SELECT * 
+FROM city 
+WHERE countrycode= 'IDN' 
+ORDER BY population DESC 
+LIMIT 10;
+
+
+-- No 2: 10 Kota Terpadat di Dunia beserta asal Negaranya
+SELECT * FROM city ci; #CountryCode
+SELECT * FROM country; #Code
+
+SELECT ci.id, ci.Name as nama_kota, ci.district, co.Name as negara, ci.Population as population
+FROM city ci
+JOIN country co
+ON ci.countrycode = co.code
+ORDER BY population DESC
+LIMIT 10;
+
+
+-- No 3: 10 Negara Yang Tercatat Merdeka Paling Awal
+-- kode negara, nama negara, benua, regional dan tahun merdeka (Independence Year)
+
+SELECT Code as code, Name as name, Continent as continent, Region as region, IndepYear as tahun_merdeka
+FROM country
+WHERE IndepYear IS NOT NULL
+ORDER BY IndepYear ASC
+LIMIT 10;
+
+
+-- No 4: Daftar Benua yg memiliki >10 Negara di dalamnya
+-- Col: nama benua, jumlah negara di dalam benua, total populasi dan rata-rata angka harapan hidup (Life Expectancy)
+-- order by populasi terbanyak
+
+SELECT continent as Benua, count(name) as Jumlah_Negara, sum(Population) as Populasi, avg(LifeExpectancy) as Rata_AngkaHrpnHdp
+FROM country
+GROUP BY continent
+HAVING count(name)>10
+ORDER BY Populasi DESC;
+
+
+
+-- No 5: Negara Asia where LifeExpct>avg(LifeExpct) Negara Eropa
+-- Col: nama_negara, nama_benua, angka harapan hidup, GNP
+
+SELECT name as Nama, continent as Benua, LifeExpectancy as AngkaHarapanHidup, GNP
+FROM country
+WHERE continent='Asia' AND LifeExpectancy>(SELECT avg(LifeExpectancy)
+FROM country
+WHERE continent= 'Europe')
+ORDER BY AngkaHarapanHidup DESC;
+
+
+-- No 6: 10 Negara w/ Official Language 'English' dan memiliki persentase pengguna English di dunia
+-- Kode negara, nama negara, bahasa, kolom isOfficial dan percentage 
+
+SELECT * FROM countrylanguage;
+
+SELECT cl.CountryCode as countrycode, co.Name as name, cl.Language as language, cl.IsOfficial as isOfficial, cl.Percentage as percentage
+FROM countrylanguage cl
+JOIN country co
+ON cl.countrycode=co.code
+WHERE language='English' AND cl.IsOfficial='T'
+ORDER BY Percentage DESC
+LIMIT 10;
+
+
+-- No 7 : Negara_ASEAN + Populasi_negara, GNP, Ibukota, Populasi_ibukota
+-- Brunei, Cambodia, East Timor, Indonesia, Laos, Malaysia, Myanmar, Philippines, Singapore, Thailand
+-- Filter by ID
+
+SELECT co.Name as Negara_ASEAN, co.Population as Populasi_Negara, co.GNP, ci.Name as Ibukota, ci.Population as Populasi
+FROM country co
+JOIN city ci
+ON ci.ID=co.Capital
+WHERE ID = 939
+or ID = 538
+or ID = 1800
+or ID = 1522
+or ID = 2432
+or ID = 2464
+or ID = 2710
+or ID = 766
+or ID = 3208
+or ID = 3320
+or ID = 3770
+ORDER BY Negara_ASEAN;
+
+
+-- No 8 : Negara G20
+
+SELECT ID, co.Name as Negara_G20, co.Population as Populasi_Negara, co.GNP, ci.Name as Ibukota, ci.Population as Populasi_Ibukota
+FROM country co
+JOIN city ci
+ON ci.ID=co.Capital
+WHERE ID = 69
+or ID = 135
+or ID = 211
+or ID = 1822 -- Canada 
+or ID = 1891 -- China
+or ID = 2974 -- France 
+or ID = 3068 -- Germany 
+or ID = 1109 -- India
+or ID = 939 -- Indonesia
+or ID = 1532 -- Japan
+or ID = 2515 -- Mexico
+or ID = 3580 -- Russia
+or ID = 3173 -- Saudi
+or ID = 716 -- South Africa
+or ID = 2331 -- South Korea
+or ID = 3358 -- Turkey
+or ID = 456 -- UK
+or ID = 3813 -- US
+ORDER BY Negara_G20;
+

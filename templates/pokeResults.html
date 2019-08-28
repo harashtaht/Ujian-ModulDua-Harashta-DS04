@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>{{ namaPoke }}Data</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css">
+    <!-- <link rel="stylesheet" type="text/css" href={{url_for('static', filename='styling.css')}}> -->
+    <style type = "text/css">
+        body {
+        background-color:lightblue;
+        }
+    </style>
+</head>
+<body> 
+    <center><br><br>
+        <h1> {{ namaPoke }} </h1><br>
+            <img src="{{ pictPoke }}" alt = "Visual Characteristics of Pokemon Searched"
+        width="220" height="220">
+        <br>
+        <h3>ID : {{ idPoke }}</h3>
+        <h3>Height: {{ htPoke }}</h3>
+        <h3>Weight: {{ wtPoke }}</h3>
+        <br>
+    <a href = "http://127.0.0.1:5000">
+        <button type = "button" class="btn btn-info btn-lg waves-effect">Back to Home</button></a>
+    </center>
+</body>
+</html>

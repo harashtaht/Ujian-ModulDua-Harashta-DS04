@@ -1,0 +1,20 @@
+body{
+    background: url(background.jpg);
+    background-repeat: no-repeat;
+    background-size: cover;
+    /* background-position: unset; */
+    /* position: relative;  */
+}
+
+input{
+    padding-right: 10%;
+    padding-bottom: 0.8%;
+    position: fixed;
+    margin-left: 35%
+}
+
+/* button{
+    margin-top: 0.9%;
+    position: fixed;
+    margin-left: 44%
+} */

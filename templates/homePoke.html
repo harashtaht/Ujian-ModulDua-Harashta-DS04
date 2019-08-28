@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Pokemon Dashboard</title>
+
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <link rel="stylesheet" type="text/css" href={{url_for('static', filename='styling.css')}}>
+    <style type = "text/css">
+        h1{
+            color:blue;
+
+        }
+    </style>
+</head>
+<body>
+    <form action="http://localhost:5000/hasil" method="POST">
+        <ul>
+        <center><br><br><h1 >Pokemon Database Center</h1></center><br><br>
+        <center><img src='https://upload.wikimedia.org/wikipedia/commons/thumb/9/98/International_Pokémon_logo.svg/1280px-International_Pokémon_logo.svg.png'
+        alt="Pokemon Logo" width="700" height="275"></center>
+        <li style='list-style-type: none;'>
+            <div class="col-xs-12">
+            <input class="form-group" id="Input_text" type="text"  name="namaPoke" placeholder="Ketik Nama Pokemon...">
+            </div>
+        </li>
+        <li style='list-style-type: none;'>
+            <button type="submit" class="btn btn-primary" style="margin-top: 4%; margin-left: 46%">Search</button>
+        </li>
+        </ul>
+    </form>
+</body>
+<!-- <body>
+    <center>
+        <h1>Pokemon Database Center</h1>
+         <img src = "https://a0.cdn.japantravel.com/photo/25322-135282/1440x960!/osaka-pokémon-center-osaka-135282.jpg"
+        alt="Center" style="width:375px; height: 325px;"> -->
+        <!-- <form method="POST" action="http://127.0.0.1:5000/hasil">
+            <input type= "text" name= "namaPoke" placeholder="Ketik nama Pokemon..." />
+            <input type= "submit" value="Cari">
+        </form>
+    </center> -->
+
+<!-- </body> -->
+</html>
